@@ -7,16 +7,18 @@
  * @ author MM
  */
 import java.util.ArrayList;
+import java.util.Scanner;
 public class ContactList {
+	/**
+	 * Creates an array of object persons.
+	 */
 	private ArrayList<Person> contactList = new ArrayList<Person>();
 	
 	/**
 	 * Adds a new contact to contact list if true.
 	 */
-	public boolean createContact(String firstName, String lastName, String address, 
-			String email, String phoneNumber, String notes){
-		//Add a contact to the contact list 
-		//...
+	public boolean createContact(){
+		//scanner
 		
 		return false;
 	}
@@ -26,35 +28,32 @@ public class ContactList {
 	 * by last name.
 	 */
 	public void printContactList(){
-		//Print out the contact list
 		//... for loop and sort method
+		//uses method compareTo(person) from class person
 	}
 	
 	/**
-	 * Returns the person be we are search in for, if no lastname
+	 * Returns the contact we are searching for, if no last name
 	 * in the contact list equals what we are looking for we will
 	 * get an error.
 	 */
-	public String getContact(String lastName){
-		//Return the person whose last name is equal to lastName or an error if they aren't in the list
-		//...
-			
-		return "";
+	public Person getContact(String lastName){
+		//uses method equals(lastname) from class person
+		
+		return null;
 	}
 	
 	/**
 	 * Saves the ContactList to disk.
 	 */
 	public void save(){
-		//Save the ContactList as a file
-		//...
+		
 	}
 	
 	/**
 	 * Loads the saved ContactList from a file.
 	 */
 	public void load(){
-		//Load the saved ContactList from a file
-		//...
+		
 	}
 }
