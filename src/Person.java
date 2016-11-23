@@ -13,10 +13,9 @@ public class Person implements Comparable<Person>{
 	private String notes;
 	
 	/**
-	 * Returns true if personComp equals this person.
+	 * Returns true if entered lastname equals this lastname.
 	 */
-	public boolean equals(Object personComp){
-		//return true if personComp equals this person
+	public boolean equals(String lastname){
 		
 		return false;
 	}
@@ -25,15 +24,16 @@ public class Person implements Comparable<Person>{
 	 * Returns String of one contacts information.
 	 */
 	public String toString(){
-		//return object stringified
+		
 		return "";
 	}
 	
 	/**
-	 * Returns a value representing this object comes before
+	 * Returns a value representing if this object comes before
 	 * or after the object it is being compared to.
 	 */
-	public int compareTo(Person personComp) {
+	public int compareTo(Person personComp){
+		
 		return personComp.compareTo(this);
 	}
 }
