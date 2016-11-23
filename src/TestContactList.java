@@ -29,5 +29,7 @@ public class TestContactList {
 		QualitySoft.getContact("Broccoli");
 		QualitySoft.save();
 		QualitySoft.load();
+		QualitySoft.load();
+		System.out.println("It Works!");
 	}
 }
