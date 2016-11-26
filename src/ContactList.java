@@ -15,7 +15,10 @@ public class ContactList {
 	private ArrayList<Person> contactList = new ArrayList<Person>();
 	
 	/**
-	 * Adds a new contact to contact list if true.
+	 * Returns true if user input for the new contact has all the 
+	 * necessary info and adds the new contact to the contact list.  
+	 * If missing last name than returns false and the contact is
+	 * not added to the contact list. 
 	 */
 	public boolean createContact(){
 		//scanner
@@ -33,9 +36,10 @@ public class ContactList {
 	}
 	
 	/**
-	 * Returns the contact we are searching for, if no last name
-	 * in the contact list equals what we are looking for we will
-	 * get an error.
+	 * Returns all contacts with last names equal to the one
+	 * we are searching for.  If there are no matches in the 
+	 * contact list this will return a message stating this 
+	 * contact doesn't exist.
 	 */
 	public Person getContact(String lastName){
 		//uses method equals(lastname) from class person
