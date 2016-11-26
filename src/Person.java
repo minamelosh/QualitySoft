@@ -12,6 +12,18 @@ public class Person implements Comparable<Person>{
 	private String phoneNumber;
 	private String notes;
 	
+	public Person(String firstName, String lastName, String address, String email, String phoneNumber, String notes){
+		
+	}
+	
+	/*
+	 * Returns new contacts data from class ContactList.
+	 */
+	public String getInfo(){
+		
+		return "";
+	}
+	
 	/**
 	 * Returns true if entered lastname equals this lastname.
 	 */
