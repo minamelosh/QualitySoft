@@ -1,10 +1,12 @@
-/**
+/**test
  * One object of class Person stores the information 
  * for one contact in class contactList: name, address, 
  * email, phone number and notes.
  * @ author MM
  */
-public class Person implements Comparable<Person>{
+import java.util.*;
+
+public class Person implements Comparable<Person> {
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -45,7 +47,7 @@ public class Person implements Comparable<Person>{
 	 * or after the object it is being compared to.
 	 */
 	public int compareTo(Person personComp){
-		
-		return personComp.compareTo(this);
+		return 0;
+		//return personComp.compareTo(this);
 	}
 }

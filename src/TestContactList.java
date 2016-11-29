@@ -14,13 +14,13 @@ public class TestContactList {
 		 */
 		Person person1 = new Person("Michael","Skittles","211 Christmas Lane","michaelskittles@gmail.com","211-1111","None");
 		Person person2 = new Person("Nathan", "Chocolate", "311 Thanksgiving Drive", "nathanchocolate@yahoo.com", "311-1111", "Please call");
-		person1.compareTo(person2);
-		person1.equals(person2);
+		System.out.println(person1.compareTo(person2));
+		System.out.println(person1.equals(person2));
 		Person person3 = new Person ("Sally", "Skittles", "411 Easter Street", "sallyskittles@yhoo.com", "411-1111", "Please emails");
-		person3.compareTo(person1);
-		person3.compareTo(person2);
-		person3.equals(person1);
-		person3.equals(person2);
+		System.out.println(person3.compareTo(person1));
+		System.out.println(person3.compareTo(person2));
+		System.out.println(person3.equals(person1));
+		System.out.println(person3.equals(person2));
 		/**
 		 * Test Class Contact List by creating new contacts, searching for a contact,
 		 * creating contacts with missing information, prints the contact list, and
