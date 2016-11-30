@@ -35,7 +35,7 @@ public class ContactList {
 		String phoneNumber= console.next();
 		System.out.print("Notes: ");
 		String notes = console.next();
-		if (lastName == null && lastName == ""){
+		if (lastName == null || lastName.length() == 0){
 			System.out.println("Last name required. Your contact was not saved.");
 			return false;
 		}
