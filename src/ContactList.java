@@ -21,9 +21,26 @@ public class ContactList {
 	 * not added to the contact list. 
 	 */
 	public boolean createContact(){
-		//scanner
-		
-		return false;
+	Scanner console = new Scanner (System.in);
+		System.out.println("Please fill out the following.");
+		System.out.print("Last Name: ");
+		String lastName = console.nextLine();
+		System.out.print("First Name: ");
+		String firstName = console.nextLine();
+		System.out.print("Address: ");
+		String address = console.nextLine();
+		System.out.print("Email Address: ");
+		String email = console.nextLine();
+		System.out.print("Phone Number: ");
+		String phoneNumber= console.nextLine();
+		System.out.print("Notes: ");
+		String notes = console.nextLine();
+		if (lastName == null || lastName.length() == 0){
+			System.out.println("Last name required. Your contact was not saved.");
+			return false;
+		}
+		Person contact = new Person(lastName, firstName, address, email, phoneNumber, notes);
+		return true;
 	}
 	 
 	/**
