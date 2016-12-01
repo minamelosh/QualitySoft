@@ -1,10 +1,11 @@
-/**
+/**test
  * One object of class Person stores the information 
  * for one contact in class contactList: name, address, 
  * email, phone number and notes.
  * @ author MM
  */
-public class Person implements Comparable<Person>{
+
+public class Person implements Comparable<Person> {
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -12,11 +13,61 @@ public class Person implements Comparable<Person>{
 	private String phoneNumber;
 	private String notes;
 	
-	/**
-	 * Returns true if personComp equals this person.
+	public Person(String firstName, String lastName, String address, String email, String phoneNumber, String notes){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.notes = notes;
+	}
+	/*
+	 * Makes private variables available for class Contact list to set the values stored in them.
 	 */
-	public boolean equals(Object personComp){
-		//return true if personComp equals this person
+	public void setLastName(String newLastName){
+		lastName = newLastName;
+	}
+	public void setFirstName(String newFirstName){
+		firstName = newFirstName;
+	}
+	public void setAddress(String newAddress){
+		address = newAddress;
+	}
+	public void setEmail(String newEmail){
+		email = newEmail;
+	}
+	public void setPhoneNumber(String newPhoneNumber){
+		phoneNumber = newPhoneNumber;
+	}
+	public void setNotes(String newNotes){
+		notes = newNotes;
+	/**
+	 * Allows class person to get the new values stored in private variables. 
+	 */
+	}
+	public String getLastName(){
+		return lastName;
+	}
+	public String getFirstName(){
+		return firstName;
+	}
+	public String getAddress(){
+		return address;
+	}
+	public String getEmail(){
+		return email;
+	}
+	public String getPhoneNumber(){
+		return phoneNumber;
+	}
+	public String getNotes(){
+		return notes;
+	}
+	
+	/**
+	 * Returns true if entered lastname equals this lastname.
+	 */
+	public boolean equals(String lastname){
 		
 		return false;
 	}
@@ -25,15 +76,16 @@ public class Person implements Comparable<Person>{
 	 * Returns String of one contacts information.
 	 */
 	public String toString(){
-		//return object stringified
-		return "";
+		String OneGuy = firstName +  " " + lastName + " " + address + " " + phoneNumber + " " + email + " " + notes;
+		return OneGuy ;
 	}
 	
 	/**
-	 * Returns a value representing this object comes before
+	 * Returns a value representing if this object comes before
 	 * or after the object it is being compared to.
 	 */
-	public int compareTo(Person personComp) {
-		return personComp.compareTo(this);
+	public int compareTo(Person personComp){
+		return 0;
+		//return personComp.compareTo(this);
 	}
 }
