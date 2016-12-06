@@ -21,7 +21,7 @@ public class Person implements Comparable<Person> {
 	}
 
 	/**
-	 * Returns true if entered lastname equals this lastname.
+	 * Returns true if entered lastname equals this.lastname.
 	 */
 	public boolean equals(String lastname) {
 
@@ -31,8 +31,9 @@ public class Person implements Comparable<Person> {
 	/**
 	 * Returns String of one contacts information.
 	 */
+	@Override
 	public String toString() {
-		String OneGuy = lastName + ", " + firstName + "\n" + address + "\n" + phoneNumber + "\n" + email + "\n" + notes;
+		String OneGuy = lastName + ", " + firstName + "\n" + address + "\n" + phoneNumber + "\n" + email + "\n" + notes + "\n";
 		return OneGuy;
 	}
 

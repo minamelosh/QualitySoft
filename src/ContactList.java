@@ -12,26 +12,22 @@ import java.util.Scanner;
 
 public class ContactList {
 	/**
-	 * Creates an array of object persons.
+	 * Creates an array of Person objects.
 	 */
 	private ArrayList<Person> contactList = new ArrayList<Person>();
 
 	/**
-	 * Returns true if user input for the new contact has all the necessary info
-	 * and adds the new contact to the contact list. If missing last name than
-	 * returns false and the contact is not added to the contact list.
+	 * Creates a contact in the Contact List. If The last name is missing
+	 * the contact won't be created
 	 */
-
 	public void createContact() {
-
 		Scanner console = new Scanner(System.in);
 		System.out.println("Please fill out the following.");
-		System.out.print("Last Name: ");
+		System.out.print("Last Name*: ");
 		String lastName = console.nextLine();
 		if (lastName == null || lastName.length() == 0) {
 			// put check here! no reason to execute further code if it fails
-			System.out.println("Last name required. Your contact was not created.");
-			console.close();
+			System.out.println("Last name required. Your contact was not created." + "\n");
 			return;
 		} else {
 			System.out.print("First Name: ");
@@ -44,19 +40,23 @@ public class ContactList {
 			String phoneNumber = console.nextLine();
 			System.out.print("Notes: ");
 			String notes = console.nextLine();
-			Person contact = new Person(lastName, firstName, address, email, phoneNumber, notes);
-			System.out.println(contact.toString());
+			contactList.add(new Person(lastName, firstName, address, email, phoneNumber, notes));
 			System.out.println("Contact has been created successfully!");
-			console.close();
+			System.out.println("");
 		}
 	}
 
 	/**
 	 * Prints out whole contact list in alphabetical order by last name.
-	 */
+	 */	// ... for loop and sort method
+	// uses method compareTo(person) from class person
 	public void printContactList() {
-		// ... for loop and sort method
-		// uses method compareTo(person) from class person
+		
+		for(int i = 0; i < contactList.size(); i++) {   
+		    System.out.print(contactList.get(i));
+		    System.out.println("");
+		}  
+		
 	}
 
 	/**
@@ -69,11 +69,13 @@ public class ContactList {
 
 		return null;
 	}
-
+	
+	
+	
 	/**
 	 * Saves the ContactList to disk.
 	 */
-	public void save() {
+	public void save() { //please close console in this method
 
 	}
 
