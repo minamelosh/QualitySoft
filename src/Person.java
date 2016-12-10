@@ -20,13 +20,9 @@ public class Person implements Comparable<Person> {
 		this.notes = notes;
 	}
 
-	/**
-	 * Returns true if entered lastname equals this.lastname.
-	 */
-	public boolean equals(String lastname) {
-
-		return false;
-	}
+     public String getLastName() {
+    	 return this.lastName;
+     }
 
 	/**
 	 * Returns String of one contacts information.
@@ -38,11 +34,11 @@ public class Person implements Comparable<Person> {
 	}
 
 	/**
-	 * Returns a value representing if this object comes before or after the
-	 * object it is being compared to.
+	 * Method compares based on last name (Alphabetically)
 	 */
+	 
+	@Override
 	public int compareTo(Person personComp) {
-		return 0;
-		// return personComp.compareTo(this);
+		 return this.lastName.compareTo(personComp.getLastName());
 	}
 }
