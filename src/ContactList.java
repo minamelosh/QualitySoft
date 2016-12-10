@@ -8,6 +8,7 @@
  * @ author MM
  */
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class ContactList {
@@ -17,8 +18,8 @@ public class ContactList {
 	private ArrayList<Person> contactList = new ArrayList<Person>();
 
 	/**
-	 * Creates a contact in the Contact List. If The last name is missing
-	 * the contact won't be created
+	 * Creates a contact in the Contact List. If The last name is missing the
+	 * contact won't be created
 	 */
 	public void createContact() {
 		Scanner console = new Scanner(System.in);
@@ -48,15 +49,16 @@ public class ContactList {
 
 	/**
 	 * Prints out whole contact list in alphabetical order by last name.
-	 */	// ... for loop and sort method
+	 */ // ... for loop and sort method
 	// uses method compareTo(person) from class person
 	public void printContactList() {
 		
-		for(int i = 0; i < contactList.size(); i++) {   
-		    System.out.print(contactList.get(i));
-		    System.out.println("");
-		}  
-		
+		Collections.sort(contactList);
+
+		for (Person person : contactList) {
+			System.out.print(person);
+			System.out.println("");
+		}
 	}
 
 	/**
@@ -64,18 +66,21 @@ public class ContactList {
 	 * for. If there are no matches in the contact list this will return a
 	 * message stating this contact doesn't exist.
 	 */
-	public Person getContact(String lastName) {
-		// uses method equals(lastname) from class person
-
-		return null;
+	void getContact() {
+		Scanner console = new Scanner(System.in);
+		System.out.println("Please write a Contact's last name to search for");
+		String lastName = console.nextLine();
+		for (Person person : contactList) {
+			if (lastName.equals(person.getLastName())) {
+				System.out.println(person);
+			}
+		}
 	}
-	
-	
-	
+
 	/**
 	 * Saves the ContactList to disk.
 	 */
-	public void save() { //please close console in this method
+	public void save() { // please close console in this method
 
 	}
 
