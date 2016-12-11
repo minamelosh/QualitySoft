@@ -10,8 +10,9 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+import java.io.*;
 
-public class ContactList {
+public class ContactList implements Serializable {
 	/**
 	 * Creates an array of Person objects.
 	 */
@@ -52,7 +53,7 @@ public class ContactList {
 	 */ // ... for loop and sort method
 	// uses method compareTo(person) from class person
 	public void printContactList() {
-		
+
 		Collections.sort(contactList);
 
 		for (Person person : contactList) {
@@ -78,16 +79,51 @@ public class ContactList {
 	}
 
 	/**
-	 * Saves the ContactList to disk.
+	 * Saves the ContactList to disk and quits the program session.
 	 */
-	public void save() { // please close console in this method
+	public void save() {
+		FileOutputStream outFile;
+		ObjectOutputStream outObject;
 
+		try {
+			outFile = new FileOutputStream("MyContactList");
+			outObject = new ObjectOutputStream(outFile);
+			outObject.writeObject(contactList);
+			outFile.close();
+			outObject.close();
+		} catch (IOException ioe) {
+			System.out.println("Error writing objects to the file: " + ioe.getMessage());
+		} finally {
+			System.out.println("Contacts saved. Goodbye!");
+			System.exit(0);
+		}
 	}
 
 	/**
 	 * Loads the saved ContactList from a file.
 	 */
 	public void load() {
+		ObjectInputStream inObject;
+		FileInputStream inFile;
 
+		try {
+			inFile = new FileInputStream("MyContactList");
+			inObject = new ObjectInputStream(inFile);
+			contactList = (ArrayList<Person>) inObject.readObject();
+			inFile.close();
+			inObject.close();
+		} catch (IOException ioe) {
+			System.out.println("Error reading from the file: " + ioe.getMessage());
+		} catch (ClassNotFoundException cnfe) {
+			System.out.println("Error in casting to ContactList: " + cnfe);
+		}
+	}
+
+	/**
+	 * Returns integer number of contacts in the Contact List
+	 */
+	public int numberOfContacts() {
+		int numberOfContacts = contactList.size();
+		return numberOfContacts;
 	}
 }
