@@ -1,9 +1,11 @@
+import java.io.Serializable;
+
 /**
  * test One object of class Person stores the information for one contact in
  * class contactList: name, address, email, phone number and notes. @ author MM
  */
 
-public class Person implements Comparable<Person> {
+public class Person implements Comparable<Person>, Serializable {
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -20,25 +22,27 @@ public class Person implements Comparable<Person> {
 		this.notes = notes;
 	}
 
-     public String getLastName() {
-    	 return this.lastName;
-     }
+	public String getLastName() {
+		return this.lastName;
+	}
 
 	/**
 	 * Returns String of one contacts information.
 	 */
 	@Override
 	public String toString() {
-		String OneGuy = lastName + ", " + firstName + "\n" + address + "\n" + phoneNumber + "\n" + email + "\n" + notes + "\n";
+		String OneGuy = lastName + ", " + firstName + "\n" + address + "\n" + phoneNumber + "\n" + email + "\n" + notes
+				+ "\n";
 		return OneGuy;
 	}
 
 	/**
 	 * Method compares based on last name (Alphabetically)
 	 */
-	 
+
 	@Override
 	public int compareTo(Person personComp) {
-		 return this.lastName.compareTo(personComp.getLastName());
+		return this.lastName.compareTo(personComp.getLastName());
 	}
+
 }
