@@ -1,14 +1,21 @@
+
 /*
- * Tests class ContactList and class Person by allowing the user to create two contacts 
+ * Tests class ContactList and class Person by allowing the user to create two contacts
  * and printing the current ContactList after each successful creation
  */
+import java.io.File;
 import java.util.Scanner;
-
 
 public class app {
 
 	public static void main(String[] args) {
 		ContactList app = new ContactList();
+		File newFile = new File("CLFileName");
+		if (newFile.exists()) {
+			app.load();
+			System.out.println("Welcome back. Contacts loaded!");
+		}
+
 		Scanner console = new Scanner(System.in);
 		System.out.println("What would you like to do? (type a number and hit Enter)");
 		System.out.println("");
@@ -18,18 +25,23 @@ public class app {
 			System.out.println("3 - Print out the whole Contact List");
 			System.out.println("4 - Save Contact List and Exit the program");
 			int userChoice = console.nextInt();
-			
-			switch (userChoice) {
-			case 1: app.createContact();
-					break;
-			case 2: app.getContact();
-					break;
-			case 3: app.printContactList();
-					break;
-			}
-			
-		}
-		
-	}
-}
 
+			switch (userChoice) {
+			case 1:
+				app.createContact();
+				break;
+			case 2:
+				app.getContact();
+				break;
+			case 3:
+				app.printContactList();
+				break;
+			case 4:
+				app.save(); // saves to disk and exits program -JL
+				break;
+			}
+		}
+
+	}
+
+}

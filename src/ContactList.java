@@ -1,12 +1,18 @@
 
 /*
- * Creates reusable Class contactList, which stores 
- * a list of contacts.  Class contactList allows you 
- * to create a new contact, search for a contact by 
- * last name, print the entire list in alphabetical 
+ * Creates reusable Class contactList, which stores
+ * a list of contacts.  Class contactList allows you
+ * to create a new contact, search for a contact by
+ * last name, print the entire list in alphabetical
  * order by last name, and save to disk.
  * @ author MM
  */
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -49,15 +55,30 @@ public class ContactList {
 
 	/**
 	 * Prints out whole contact list in alphabetical order by last name.
-	 */ // ... for loop and sort method
-	// uses method compareTo(person) from class person
+	 */
 	public void printContactList() {
-		
-		Collections.sort(contactList);
+		File newFile = new File("CLFileName");
+		if (newFile.exists()) {
+			try {
+				FileInputStream fis = new FileInputStream("CLFileName");
+				ObjectInputStream ois = new ObjectInputStream(fis);
+				ArrayList<ContactList> contactList = (ArrayList<ContactList>) ois.readObject();
+				for (int i = 0; i < contactList.size(); i++) {
+					System.out.println(contactList.get(i));
+				}
+				ois.close();
+			} catch (IOException ioe) {
+				System.out.println("Error reading from file: " + ioe.getMessage());
+			} catch (ClassNotFoundException cnfe) {
+				System.out.println("Error in casting to Person:");
+			} finally {
+				Collections.sort(contactList);
 
-		for (Person person : contactList) {
-			System.out.print(person);
-			System.out.println("");
+				for (Person person : contactList) {
+					System.out.print(person);
+					System.out.println("");
+				}
+			}
 		}
 	}
 
@@ -66,7 +87,7 @@ public class ContactList {
 	 * for. If there are no matches in the contact list this will return a
 	 * message stating this contact doesn't exist.
 	 */
-	void getContact() {
+	void getContact() { // potentially add static JL
 		Scanner console = new Scanner(System.in);
 		System.out.println("Please write a Contact's last name to search for");
 		String lastName = console.nextLine();
@@ -74,20 +95,43 @@ public class ContactList {
 			if (lastName.equals(person.getLastName())) {
 				System.out.println(person);
 			}
+
 		}
 	}
 
 	/**
 	 * Saves the ContactList to disk.
 	 */
-	public void save() { // please close console in this method
-
+	public void save() {
+		try {
+			File newFile = new File("CLFileName");
+			FileOutputStream fos = new FileOutputStream("CLFileName");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(contactList);
+			oos.flush();
+			oos.close();
+		} catch (IOException ioe) {
+			System.out.println("Error writing Contacts to file: " + ioe.getMessage());
+		} finally {
+			System.out.println("Contacts saved. Goodbye!");
+			System.exit(0);
+		}
 	}
 
 	/**
 	 * Loads the saved ContactList from a file.
 	 */
 	public void load() {
+		try {
+			FileInputStream fis = new FileInputStream("CLFileName");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			ArrayList<ContactList> contactList = (ArrayList<ContactList>) ois.readObject();
+			ois.close();
+		} catch (IOException ioe) {
+			System.out.println("Error reading from file: " + ioe.getMessage());
+		} catch (ClassNotFoundException cnfe) {
+			System.out.println("Error in casting to Person:");
+		}
 
 	}
 }
