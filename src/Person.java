@@ -1,51 +1,52 @@
 /**
- * One object of class Person stores the information 
- * for one contact in class contactList: name, address, 
- * email, phone number and notes.
- * @ author MM
+ * Test One object of class Person stores the information for one contact in: 
+ * name, address, email, phone number and notes. @author MM
  */
-public class Person implements Comparable<Person>{
+import java.io.Serializable;
+public class Person implements Comparable<Person> {
 	private String firstName;
 	private String lastName;
 	private String address;
 	private String email;
 	private String phoneNumber;
 	private String notes;
-	
-	public Person(String firstName, String lastName, String address, String email, String phoneNumber, String notes){
-		
-	}
-	
-	/*
-	 * Returns new contacts data from class ContactList.
-	 */
-	public String getInfo(){
-		
-		return "";
-	}
-	
 	/**
-	 * Returns true if entered lastname equals this lastname.
+	 * Default constructor sets the values of the member variables
+	 * to the values entered in as parameters.
+	 * @author EK
 	 */
-	public boolean equals(String lastname){
-		
-		return false;
+	public Person(String lastName, String firstName, String address, String email, String phoneNumber, String notes) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.notes = notes;
 	}
-	
+	/**
+	 * Returns the value of lastName.
+	 * @author EK
+	 */
+	public String getLastName() {
+	    return this.lastName;
+	}
 	/**
 	 * Returns String of one contacts information.
+	 * @author EK
 	 */
-	public String toString(){
-		
-		return "";
+	@Override
+	public String toString() {
+		String oneContact = lastName + ", " + firstName + "\n" + address + "\n" + phoneNumber + "\n" + email + "\n" + notes + "\n";
+		return oneContact;
 	}
-	
 	/**
-	 * Returns a value representing if this object comes before
-	 * or after the object it is being compared to.
+	 * Alphabetically compares object Persons based on 
+	 * last name, deciding if one last name comes before, 
+	 * after, or is exactly equal.
+	 * @author EK
 	 */
-	public int compareTo(Person personComp){
-		
-		return personComp.compareTo(this);
+	@Override
+	public int compareTo(Person personComp) {
+		 return this.lastName.compareTo(personComp.getLastName());
 	}
 }
