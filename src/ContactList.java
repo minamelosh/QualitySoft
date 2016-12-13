@@ -1,6 +1,8 @@
+
 /**
  * Creates reusable Class ContactList, which stores
  * a list of contacts.  Class ContactList allows you
+
  * to create a new contact, search for a contact by
  * last name, print the entire list in alphabetical
  * order by last name, and save to disk.
@@ -15,6 +17,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+
 public class ContactList {
 	/**
 	 * Creates an array of Person objects.
@@ -32,7 +35,9 @@ public class ContactList {
 		System.out.print("Last Name*: ");
 		String lastName = console.nextLine();
 		if (lastName == null || lastName.length() == 0) {
+
 			System.out.println("Last name required. Your contact was not created." + "\n");
+
 		} else {
 			System.out.print("First Name: ");
 			String firstName = console.nextLine();
@@ -61,27 +66,33 @@ public class ContactList {
 			System.out.println("");
 		}
 	}
+
 	/**
 	 * Returns all contacts with last names equal to the one we are searching
 	 * for. If there are no matches in the contact list this will return a
 	 * message stating this contact doesn't exist.
+
 	 * @author JL
 	 */
 	void getContact() { 
 		Scanner console = new Scanner(System.in);
 		System.out.println("Please write a Contact's last name to search for: ");
+
 		String lastName = console.nextLine();
 		for (Person person : contactList) {
 			if (lastName.equals(person.getLastName())) {
 				System.out.println(person);
 			}
+
 		}
 	}
+
 	/**
 	 * Saves the ContactList to disk.
 	 * @author JL
 	 */
 	public void save() {
+
 		FileOutputStream outFile;
 		ObjectOutputStream outObject;
 
@@ -93,11 +104,13 @@ public class ContactList {
 			outObject.close();
 		} catch (IOException ioe) {
 			System.out.println("Error writing objects to the file: " + ioe.getMessage());
+
 		} finally {
 			System.out.println("Contacts saved. Goodbye!");
 			System.exit(0);
 		}
 	}
+
 	/**
 	 * Loads the saved ContactList from a file.
 	 * @author JL
