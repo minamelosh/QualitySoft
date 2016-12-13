@@ -14,19 +14,23 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class ContactList {
+public class ContactList implements Serializable {
 	/**
 	 * Creates an array of Person objects.
+	 * 
 	 * @author MM
 	 */
 	private ArrayList<Person> contactList = new ArrayList<Person>();
+
 	/**
-	 * Creates a contact in the Contact List based on user input. 
-	 * If The last name is missing the contact won't be created.
+	 * Creates a contact in the Contact List based on user input. If The last
+	 * name is missing the contact won't be created.
+	 * 
 	 * @author MM
 	 */
 	public void createContact() {
@@ -50,12 +54,14 @@ public class ContactList {
 			System.out.print("Notes: ");
 			String notes = console.nextLine();
 			contactList.add(new Person(lastName, firstName, address, email, phoneNumber, notes));
-			System.out.println("Contact has been created successfully!"+ "\n");
+			System.out.println("Contact has been created successfully!" + "\n");
 		}
 	}
+
 	/**
 	 * Prints out whole contact list in alphabetical order by last name.
-	 * @author JL
+	 * 
+	 * @authors JL
 	 */
 	public void printContactList() {
 
@@ -70,24 +76,32 @@ public class ContactList {
 	 * Returns all contacts with last names equal to the one we are searching
 	 * for. If there are no matches in the contact list this will return a
 	 * message stating this contact doesn't exist.
-
-	 * @author JL
+	 * 
+	 * @author EK
 	 */
-	void getContact() { 
-		Scanner console = new Scanner(System.in);
-		System.out.println("Please write a Contact's last name to search for: ");
-
-		String lastName = console.nextLine();
-		for (Person person : contactList) {
-			if (lastName.equals(person.getLastName())) {
-				System.out.println(person);
+	public void getContact() {
+		int helper = 0;
+		if (contactList.isEmpty()) {
+			System.out.println("*** Contact List is empty, nothing to search for ***" + "\n");
+		} else {
+			Scanner console = new Scanner(System.in);
+			System.out.println("Please write a Contact's last name to search for: ");
+			String lastName = console.nextLine();
+			for (Person person : contactList) {
+				if (lastName.equals(person.getLastName())) {
+					System.out.println(person);
+					helper++;
+				}
 			}
-
+			if (helper == 0) {
+				System.out.println("***no contacts found***");
+			}
 		}
 	}
 
 	/**
 	 * Saves the ContactList to disk.
+	 * 
 	 * @author JL
 	 */
 	public void save() {
@@ -112,6 +126,7 @@ public class ContactList {
 
 	/**
 	 * Loads the saved ContactList from a file.
+	 * 
 	 * @author JL
 	 */
 	public void load() {
@@ -125,13 +140,15 @@ public class ContactList {
 			inFile.close();
 			inObject.close();
 		} catch (IOException ioe) {
-			System.out.println("Error reading from the file: " + ioe.getMessage());
+			System.out.println("*** No saved Contact List found ***" + "\n");
 		} catch (ClassNotFoundException cnfe) {
 			System.out.println("Error in casting to ContactList: " + cnfe);
 		}
 	}
+
 	/**
 	 * Returns integer number of contacts in the Contact List.
+	 * 
 	 * @author EK
 	 */
 	public int numberOfContacts() {
