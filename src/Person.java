@@ -34,11 +34,6 @@ public class Person implements Comparable<Person>, Serializable {
 	    return this.lastName;
 	}
 
-
-	public String getLastName() {
-		return this.lastName;
-	}
-
 	/**
 	 * Returns String of one contacts information.
 	 * @author EK
