@@ -3,7 +3,7 @@
  * name, address, email, phone number and notes. @author MM
  */
 import java.io.Serializable;
-public class Person implements Comparable<Person> {
+public class Person implements Comparable<Person>, Serializable {
 	private String firstName;
 	private String lastName;
 	private String address;
