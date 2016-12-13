@@ -62,8 +62,7 @@ public class ContactList {
 		Collections.sort(contactList);
 
 		for (Person person : contactList) {
-			System.out.print(person);
-			System.out.println("");
+			System.out.print(person + "\n");
 		}
 	}
 
@@ -106,7 +105,7 @@ public class ContactList {
 			System.out.println("Error writing objects to the file: " + ioe.getMessage());
 
 		} finally {
-			System.out.println("Contacts saved. Goodbye!");
+			System.out.println("See you later!");
 			System.exit(0);
 		}
 	}
