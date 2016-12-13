@@ -16,7 +16,7 @@ public class App {
 			System.out.println("1 - Create a New Contact");
 			System.out.println("2 - Search for existing contact by Last name");
 			System.out.println("3 - Print out the whole Contact List");
-			System.out.println("4 - Save Contact List and Exit the program");
+			System.out.println("4 - Exit the program");
 			String input = console.next();
 			try {
 				int userChoice = Integer.parseInt(input);
