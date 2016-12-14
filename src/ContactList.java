@@ -65,7 +65,7 @@ public class ContactList {
 	 * Returns all contacts with last names equal to the one the user is searching
 	 * for. If there are no matches in the contact list this will return a
 	 * message stating this contact doesn't exist.
-	 * @author JL
+	 * @author EK
 	 */
 	public void getContact() {
 		int helper = 0;
